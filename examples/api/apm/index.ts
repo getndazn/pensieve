@@ -17,7 +17,7 @@ import newRelic from "newrelic"
 require("@newrelic/aws-sdk")
 import { outboundRequestRoute } from "./routes"
 import { metricsService } from "./metrics"
-import { inboundRequest } from "../../../src/middlewares"
+import { inboundRequest } from "../../../src/middleware"
 import express from "express"
 
 const app = express()

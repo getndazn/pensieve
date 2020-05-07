@@ -1,5 +1,5 @@
 export * from "./Pensieve"
 export * from "./defaults"
 export * from "./metrics"
-export * from "./middlewares"
+export * from "./middleware"
 export * from "./types"

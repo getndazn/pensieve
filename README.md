@@ -109,7 +109,7 @@ Done!
 To monitor **inbound requests**, add this middleware to each route:
 
 ```typescript
-import { inboundRequest } from "@dazn/pensieve/lib/middlewares"
+import { inboundRequest } from "@dazn/pensieve/lib/middleware"
 
 // Versioned API's
 app.get("/v1/items", inboundRequest(metricsService, { name: "items_get", version: "v1" }), outboundRequestRoute)

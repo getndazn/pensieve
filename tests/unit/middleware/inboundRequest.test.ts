@@ -1,4 +1,4 @@
-import { inboundRequest } from "../../../src/middlewares"
+import { inboundRequest } from "../../../src/middleware"
 import {
   mockApplicationData,
   mockDefaultAttributes, mockInboundRequestAttributes,
