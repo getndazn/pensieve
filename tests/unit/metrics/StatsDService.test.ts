@@ -25,10 +25,10 @@ describe("StatsdService", () => {
   // Prepare
 
   const statsDClientInstanceMock = TestUtil.mockOfInstance<StatsD>(new StatsD(), false)
-  statsDClientInstanceMock.setup(x => x.histogram(It.isAny(), It.isAny(), It.isAny())).returns(() => {})
-  statsDClientInstanceMock.setup(x => x.gauge(It.isAny(), It.isAny(), It.isAny())).returns(() => {})
-  statsDClientInstanceMock.setup(x => x.increment(It.isAny(), It.isAny())).returns(() => {})
-  statsDClientInstanceMock.setup(x => x.timing(It.isAny(), It.isAny())).returns(() => {})
+  statsDClientInstanceMock.setup(x => x.histogram(It.isAny(), It.isAny(), It.isAny())).returns(() => ({}))
+  statsDClientInstanceMock.setup(x => x.gauge(It.isAny(), It.isAny(), It.isAny())).returns(() => ({}))
+  statsDClientInstanceMock.setup(x => x.increment(It.isAny(), It.isAny())).returns(() => ({}))
+  statsDClientInstanceMock.setup(x => x.timing(It.isAny(), It.isAny())).returns(() => ({}))
 
   const pensieveInstanceMock = TestUtil.mockOfInstance<Pensieve>(new Pensieve(mockApplicationData), false)
   pensieveInstanceMock.setup(x => x.getApplicationDataValue(mockApplicationData, It.isAny())).returns(() => DEFAULT)
@@ -37,7 +37,7 @@ describe("StatsdService", () => {
   pensieveInstanceMock.setup(x => x.getInboundHttpRequestContext(It.isAny())).returns(() => mockInboundRequestAttributes)
 
   const loggerMock = TestUtil.mock<LoggerInterface>(false)
-  loggerMock.setup(x => x.debug(It.isAny())).returns(() => {})
+  loggerMock.setup(x => x.debug(It.isAny())).returns(() => ({}))
 
   const getStatsdServiceInstance = (): StatsDService => new StatsDService(
     pensieveInstanceMock.object,
