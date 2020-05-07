@@ -21,6 +21,7 @@ It provides **custom metrics** with useful context related to your application o
   + [HTTP request metric (inbound and outbound)](#http-request-metric-inbound-and-outbound)
 * [Changelog](#changelog)
 * [Roadmap](#roadmap)
+* [Contributors](#contributors)
 
 ## Use cases
 - REST API's - Integrated with libraries like [Express.js](https://github.com/expressjs/express)
@@ -255,3 +256,9 @@ Please see the [CHANGELOG](CHANGELOG.md) file for more information about what ha
 
 - Migration to [Lerna](https://github.com/lerna/lerna)
 - Add example of SQS long-polling integration
+
+## Contributors
+
+- [Sara Gerion](https://github.com/saragerion)
+- [Marcio Mansur Rabelo](https://github.com/marciomansur)
+- [Caio Quirino](https://github.com/caioquirino)
