@@ -1,0 +1,7 @@
+dazn-manifest: 0.0.1
+info:
+  name: pensieve
+  description: Pensieve is a npm package to be used in Node.js or TypeScript applications
+    running on EC2/ECS with an in-host StadsD agent enabled, that provides custom
+    metrics with useful context related to your application out of the box.
+  owner: Chimichanga

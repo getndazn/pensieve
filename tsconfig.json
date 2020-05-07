@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es2018",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "strict": true,
+    "pretty": true,
+    "sourceMap": true,
+    "outDir": "lib",
+    "declaration": true,
+    "declarationMap": true,
+    "incremental": true,
+    "baseUrl": "src/",
+    "rootDirs": [
+      "src/"
+    ],
+    "lib": [
+      "es2018"
+    ],
+    "types": [
+      "reflect-metadata",
+      "jest",
+      "node"
+    ],
+    "emitDecoratorMetadata": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "typeRoots": [
+    "src/@types",
+    "./node_modules/@types"
+  ]
+}

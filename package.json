@@ -1,0 +1,71 @@
+{
+  "name": "@dazn/pensieve",
+  "version": "0.4.4",
+  "description": "Pensieve is a npm package to be used in Node.js or TypeScript applications running on EC2/ECS with an in-host StadsD agent enabled, that provides custom metrics with useful context related to your application out of the box. ",
+  "scripts": {
+    "build": "gulp",
+    "test": "jest --clearCache && jest --testRegex=tests/unit/.*.ts$ --coverage --detectOpenHandles --forceExit",
+    "lint-fix": "eslint --fix \"./{src,tests}/**/*.ts\"",
+    "lint-check": "eslint \"./{src,tests}/**/*.ts\"",
+    "build-pipeline": "jsonnet fmt drone-jsonnet/drone.jsonnet -i && jsonnet ./drone-jsonnet/drone.jsonnet | json2yaml > ./.drone.yml",
+    "pack": "npm run build && eslint --fix ./lib/**/*.d.ts && npm pack",
+    "start-api-statsd": "ECS_CONTAINER_METADATA_FILE=./tests/resources/ECS_metadata.json ts-node examples/api/statsd/index.ts",
+    "start-api-apm": "ECS_CONTAINER_METADATA_FILE=./tests/resources/ECS_metadata.json ts-node examples/api/apm/index.ts"
+  },
+  "main": "lib/index.js",
+  "types": "lib/",
+  "files": [
+    "lib"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getndazn/pensieve.git"
+  },
+  "author": "chimichanga@dazn.com",
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/getndazn/pensieve#readme",
+  "devDependencies": {
+    "@newrelic/aws-sdk": "^1.1.0",
+    "@types/express": "^4.17.2",
+    "@types/jest": "^24.0.23",
+    "@types/newrelic": "^5.11.2",
+    "@types/node": "^12.12.14",
+    "@typescript-eslint/eslint-plugin": "^2.7.0",
+    "@typescript-eslint/parser": "^2.7.0",
+    "axios": "^0.19.0",
+    "del": "^5.1.0",
+    "eslint": "^6.6.0",
+    "express": "^4.17.1",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.2.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "husky": "^2.7.0",
+    "jest": "^25.3.0",
+    "jest-config": "^25.3.0",
+    "json2yaml": "^1.1.0",
+    "newrelic": "^6.2.0",
+    "ts-jest": "^24.2.0",
+    "ts-node": "^8.5.4",
+    "typemoq": "^2.1.0",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "hot-shots": "^6.8.5",
+    "reflect-metadata": "^0.1.13"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "docs/*"
+    ]
+  },
+  "publishConfig": {
+    "@dazn:registry": "https://registry.npmjs.org/",
+    "access": "restricted"
+  }
+}

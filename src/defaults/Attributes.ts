@@ -1,0 +1,14 @@
+import { VALUE_NOT_AVAILABLE } from "../types"
+
+const NOT_AVAILABLE: VALUE_NOT_AVAILABLE = "not_available"
+const DEFAULT = "default"
+
+const HTTP_DIRECTION_INBOUND = "IN"
+const HTTP_DIRECTION_OUTBOUND = "OUT"
+
+export {
+  DEFAULT,
+  NOT_AVAILABLE,
+  HTTP_DIRECTION_INBOUND,
+  HTTP_DIRECTION_OUTBOUND
+}
