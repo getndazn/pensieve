@@ -7,7 +7,6 @@
     "test": "jest --clearCache && jest --testRegex=tests/unit/.*.ts$ --coverage --detectOpenHandles --forceExit",
     "lint-fix": "eslint --fix \"./{src,tests}/**/*.ts\"",
     "lint-check": "eslint \"./{src,tests}/**/*.ts\"",
-    "build-pipeline": "jsonnet fmt drone-jsonnet/drone.jsonnet -i && jsonnet ./drone-jsonnet/drone.jsonnet | json2yaml > ./.drone.yml",
     "pack": "npm run build && eslint --fix ./lib/**/*.d.ts && npm pack",
     "start-api-statsd": "ECS_CONTAINER_METADATA_FILE=./tests/resources/ECS_metadata.json ts-node examples/api/statsd/index.ts",
     "start-api-apm": "ECS_CONTAINER_METADATA_FILE=./tests/resources/ECS_metadata.json ts-node examples/api/apm/index.ts"
