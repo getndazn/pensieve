@@ -1,6 +1,6 @@
 {
   "name": "@dazn/pensieve",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "description": "Pensieve is a npm package to be used in Node.js or TypeScript applications running on EC2/ECS with an in-host StadsD agent enabled, that provides custom metrics with useful context related to your application out of the box. ",
   "scripts": {
     "build": "gulp",
