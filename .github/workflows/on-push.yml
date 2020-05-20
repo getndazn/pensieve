@@ -1,11 +1,11 @@
-name: NPM build, test, lint
+name: on-push workflow
 
 on:
   push
 
 jobs:
-  compile:
-    runs-on: ubuntu-latest
+  runs-on: ubuntu-latest
+  build:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -13,28 +13,6 @@ jobs:
           node-version: 12
       - run: npm ci --quiet --no-progress
       - run: npm run build
-  npm-lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
       - run: npm run lint-check
-  unit-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
+      - run: npm audit --production
       - run: npm test
-  npm-audit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - run: npm i --prune
-      - run: npm audit
