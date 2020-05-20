@@ -40,7 +40,8 @@ describe("inboundRequest", () => {
   test("calls the next() function once", () => {
     const requestMock = {}
     const responseMock = {
-      on: (): void => console.log("foo")
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      on: (): void => {}
     }
 
     const nextFunctionMock: NextFunction = jest.fn()
