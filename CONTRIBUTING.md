@@ -40,7 +40,7 @@ $ npm t
 
 ```bash
 $ # Create a new version
-$ npm version 0.1.0 -m "New version"
+$ npm version 0.1.0 -m "build: new npm version"
 $ git push origin master
 ```
 
