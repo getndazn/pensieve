@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## 0.4.6 - 2020-05-20
+
+## Features
+- Minor fix to release process
+
 ## 0.4.5 - 2020-05-20
 
 ## Features
@@ -107,4 +112,4 @@ Empty release to retry the publishing of the new npm package version.
 - Diagrams
 - `examples` folder with playground Express.js app
 
-[Unreleased]: https://github.com/getndazn/pensieve/compare/0.4.5...HEAD
+[Unreleased]: https://github.com/getndazn/pensieve/compare/0.4.6...HEAD
