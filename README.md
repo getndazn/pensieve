@@ -7,7 +7,7 @@ It provides **custom metrics** with useful context related to your application o
 * [Use cases](#use-cases)
 * [Terminology](#terminology)
 * [Usage](#usage)
-  + [Instantiate a Pensieve instance](#instantiate-a-pensieve-instance)
+  + [Instantiate Pensieve](#instantiate-pensieve)
   + [Instantiate the StatsD client](#instantiate-the-statsd-client)
   + [Instantiate your metrics service](#instantiate-your-metrics-service)
   + [Integration with Express.js](#integration-with-expressjs)
@@ -15,7 +15,7 @@ It provides **custom metrics** with useful context related to your application o
     - [Example of Express.js integrations](#example-of-expressjs-integrations)
     - [Express.js integration diagram](#expressjs-integration-diagram)
   + [Submit your own custom metrics](#submit-your-own-custom-metrics)
-  + [Fetch ECS metadata information to use in your application](#fetch-ecs-metadata-information-to-use-in-your-application)
+  + [ECS metadata](#ecs-metadata)
 * [Metric attributes](#metric-attributes)
   + [Standard attributes](#standard-attributes)
   + [HTTP request metric (inbound and outbound)](#http-request-metric-inbound-and-outbound)
@@ -42,30 +42,28 @@ $ # cd projects/content-portability
 $ npm install @dazn/pensieve
 ```
 
-### Instantiate a Pensieve instance
+### Instantiate Pensieve
 
 ```typescript
 import { Pensieve } from "@dazn/pensieve"
 
 // Information & context related to your application
 // Will be used in the attributes of custom metrics
-const applicationData = {
-  appName: "content-portability",
-  component: "api",
-  env: "local",
-  awsRegion: "eu-central-1",
-  awsAvailabilityZone: "eu-central-1a",
-  appVersion: "v0.0.1",
-  host: os.hostname(),
-  ecsServiceName: "content-portability-dev",
-  serviceType: "ECS",
-  ecsTaskId: "current-task-id",
-  commitHash: "2b5ff7fb"
-}
-
-const pensieveInstance = new Pensieve(applicationData)
+const pensieveInstance = new Pensieve({
+    appName: "content-portability",
+    component: "api",
+    env: "prod",
+    awsRegion: "eu-central-1",
+    appVersion: "v0.0.1",
+    host: os.hostname(),
+    serviceType: "ecs",
+    commitHash: "abcdefg12"
+})
 
 ```
+
+Pensieve can "auto-fill" information related to your ECS service, such as AWS availability zone and ECS task ID.
+Checkout the section [ECS metadata](#ecs-metadata) for an explanation on how to do it.
 
 ### Instantiate the StatsD client
 
@@ -112,13 +110,14 @@ To monitor **inbound requests**, add this middleware to each route:
 import { inboundRequest } from "@dazn/pensieve/lib/middleware"
 
 // Versioned API's
-app.get("/v1/items", inboundRequest(metricsService, { name: "items_get", version: "v1" }), outboundRequestRoute)
+app.get("/v1/items", inboundRequest(metricsService, { path: "get_items", version: "v1" }), routeFn)
+app.get("/v2/items", inboundRequest(metricsService, { path: "get_items", version: "v2" }), routeFn)
 
 // Unversioned API's
-app.get("/items", inboundRequest(metricsService, { name: "items_get" }), outboundRequestRoute)
+app.get("/items", inboundRequest(metricsService, { path: "get_items" }), routeFn)
 ```
 
-To monitor **outbound requests**, submit the outbound request after the action is perfomed:
+To monitor **outbound requests**, submit the outbound request after the action is performed (`metricsService` initialized as [described here](#instantiate-your-metrics-service).   ):
 
 ```typescript
 let statusCode;
@@ -169,7 +168,7 @@ const myOwnIncrementMetric: IncrementMetric = {
   kind: "increment",
   key: "somethingHappened",
   attributes: {
-    foo: "bar" // Your own custom attributes here
+    foo: "bar" // Your own extra custom attributes here
   }
 }
 
@@ -177,7 +176,7 @@ metricsService.submit(myOwnIncrementMetric)
 
 ```
 
-### Fetch ECS metadata information to use in your application
+### ECS metadata
 
 Pensieve also allows you to gather useful context related to the ECS task where the application is running, when applicable.  
 For this functionality to work, make sure that your ECS container agent has the setting `ECS_ENABLE_CONTAINER_METADATA=true` enabled.  
@@ -185,8 +184,16 @@ For this functionality to work, make sure that your ECS container agent has the 
 
 ```typescript
 const pensieveInstance = new Pensieve(
-  applicationData, // Context about your own application
-  true             // Enable ECS metadata context, disabled by default
+  {
+      appName: "content-portability",
+      component: "api",
+      env: "prod",
+      appVersion: "v0.0.1",
+      host: os.hostname(),
+      serviceType: "ECS",
+      commitHash: "abcdefg12"
+  },
+  true  // Enable ECS metadata context, disabled by default
 )
 
 // ECS metadata available for you:
