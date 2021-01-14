@@ -1,14 +1,14 @@
 
-> 1. Make sure you follow our Contributing Guidelines: https://github.com/getndazn/pensieve/blob/master/CONTRIBUTING.md
+> 1. Make sure you follow our Contributing Guidelines: https://github.com/getndazn/pensieve/blob/main/CONTRIBUTING.md
 > 2. Do not remove any section of the template. If something is not applicable leave it empty, but leave it in the PR.
 > 3. Please follow the template, otherwise we'll have to ask you to update it and it will take longer until your PR is merged.
 
 
 # Description
 
-> Please include a summary of the change and which issue is fixed (when applicable).   
-> Please also include relevant motivation and context.   
-> List any dependencies that are required for this change.  
+> Please include a summary of the change and which issue is fixed (when applicable).
+> Please also include relevant motivation and context.
+> List any dependencies that are required for this change.
 
 ## How to verify this change
 
@@ -17,14 +17,14 @@ to make it easy for us to verify this works. The easier you make it for us
 to review a PR, the faster we can review and merge it.
 
 > Examples:
-> Screenshots - Showing the difference between your output and the master  
-> Cloud Configuration - List cloud resources and show that the correct configuration is in place (e.g. AWS CLI commands)  
-> Other - Anything else that comes to mind to help us evaluate  
+> Screenshots - Showing the difference between your output and output in the main branch
+> Cloud Configuration - List cloud resources and show that the correct configuration is in place (e.g. AWS CLI commands)
+> Other - Anything else that comes to mind helping us evaluate
 
 
 ### Related issues
 
-> Add here the link to one or more issues that are related to this PR.  
+> Add here the link to one or more issues that are related to this PR.
 >
 > [#XXXXX](https://github.com/getndazn/pensieve/issues/XXXXX)
 
