@@ -41,7 +41,7 @@ $ npm t
 ```bash
 $ # Create a new version
 $ npm version 0.1.0 -m "build: new npm version"
-$ git push origin master
+$ git push origin main
 ```
 
 2. Go to: https://github.com/getndazn/pensieve/releases & create a new release using the same version above.
@@ -54,7 +54,7 @@ $ git push origin master
 
 ## Contributing to the codebase
 
-* Implement your commits in a separated branch, branching off from master.
+* Implement your commits in a separated branch, branching off from the main branch.
 
 * Push your branch to the origin.
 
@@ -106,7 +106,7 @@ build: some informative description
 chore: some informative description
 ```
 
-TIP: [commitizen](https://github.com/commitizen/cz-cli) can help you following this convention.  
+TIP: [commitizen](https://github.com/commitizen/cz-cli) can help you following this convention.
 Run this command to install it in your local environment:
 
 ```
